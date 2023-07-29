@@ -1,0 +1,353 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="assets/style/normalize.css">
+    <link rel="stylesheet" href="assets/bootstrap-5.3.0-alpha1-dist/css/bootstrap.css">
+    <link rel="stylesheet" href="assets/style/style.css">
+    <title>Assignment-6</title>
+
+</head>
+<body>
+<header>
+    <nav class="navbar navbar-expand-lg bg-secondary-subtle">
+        <div class="container-fluid">
+            <a class="navbar-brand fw-bold fs-4" href="#"><img src="./assets/img/icons8-spring-boot-48.png" alt=""
+                                                               width="15%">My POS System</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0 fw-bold ps-5 justify-content-end w-50">
+                    <li class="nav-item">
+                        <a class="nav-link active navSelect" aria-current="page" href="#" onclick="navigation('',this)"
+                           style="color: blue">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link navSelect" href="#" onclick="navigation('CUSTOMER',this)">Customer</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link navSelect" href="#" onclick="navigation('ITEM',this)">Item</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link navSelect" href="#" onclick="navigation('ORDER',this)">Order</a>
+                    </li>
+
+
+                </ul>
+                <ul class="nav justify-content-end  fw-bold">
+                    <li class="nav-item">
+                        <a class="nav-link active text-black" aria-current="page" href="#">Signup</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-black" href="#">Logout</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+<main class="container-fluid">
+    <main id="customer-page" class="container-xxl" style="display: none;">
+        <section class="row">
+            <section class="col col-xxl-12 row justify-content-center mt-2" id="manageCustomer">
+                <aside class="col-12 row justify-content-center">
+                    <h4 class="col-3">Manage Customer</h4>
+                </aside>
+                <aside class="col-4">
+                    <div class="mb-3">
+                        <label for="customerID" class="form-label fw-bold">ID</label>
+                        <input type="text" class="form-control w-75" id="customerID" placeholder="ID">
+                    </div>
+                    <div class="mb-3">
+                        <label for="customerAddress" class="form-label fw-bold">Address</label>
+                        <input type="text" class="form-control w-75" id="customerAddress" placeholder="Address">
+                    </div>
+                </aside>
+                <aside class="col-4">
+                    <div class="mb-3">
+                        <label for="customerName" class="form-label fw-bold">Name</label>
+                        <input type="text" class="form-control w-75" id="customerName" placeholder="Name">
+                    </div>
+                    <div class="mb-3">
+                        <label for="customerSalary" class="form-label fw-bold">Salary</label>
+                        <input type="number" class="form-control w-75" id="customerSalary" placeholder="Salary">
+                    </div>
+                </aside>
+                <aside class="col-12 row justify-content-center">
+                    <div class="col-4">
+                        <button type="button" class="btn btn-warning text-white fw-bold">Search</button>
+                        <input type="text" class="form-control w-50 d-inline" id="searchCustomer" placeholder="Search">
+                    </div>
+                    <div class="col-4" id="customerBtnSection">
+                        <button type="button" class="btn btn-primary">Save</button>
+                        <button type="button" class="btn btn-success opacity-25" disabled>Update</button>
+                        <button type="button" class="btn btn-danger opacity-25" disabled>Delete</button>
+                        <button type="button" class="btn btn-success btn-sm">new</button>
+                    </div>
+                </aside>
+            </section>
+            <hr>
+            <section class="col-12">
+                <table class="table bg-white">
+                    <thead class="bg-secondary">
+                    <tr>
+                        <th scope="col">#ID</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Address</th>
+                        <th scope="col">Salary</th>
+                    </tr>
+                    </thead>
+
+                    <tbody class="table-group-divider" id="tblCustomerBody">
+
+                    </tbody>
+                </table>
+            </section>
+        </section>
+    </main>
+    <main id="item-page" class="container-xxl" style="display:none;">
+        <section class="row">
+            <section class="col col-xxl-12 h-50 row mt-2 justify-content-center" id="manageItemSection">
+                <aside class="col-12 row justify-content-center">
+                    <h4 class="col-3">Manage Item</h4>
+                </aside>
+                <aside class="col-4">
+                    <div class="mb-3">
+                        <label for="ItemCode" class="form-label fw-bold">Item Code</label>
+                        <input type="text" class="form-control w-75" id="itemCode" placeholder="Enter Item Code">
+                    </div>
+                    <div class="mb-3">
+                        <label for="itemQty" class="form-label fw-bold">Qty</label>
+                        <input type="number" class="form-control w-75" id="itemQty" placeholder="Enter Qty">
+                    </div>
+                </aside>
+                <aside class="col-4">
+                    <div class="mb-3">
+                        <label for="itemDesc" class="form-label fw-bold">Description</label>
+                        <input type="text" class="form-control w-75 " id="itemDesc" placeholder="Enter Description">
+
+                    </div>
+                    <div class="mb-3">
+                        <label for="itemUnitPrice" class="form-label fw-bold">Unit Price</label>
+                        <input type="number" class="form-control w-75" id="itemUnitPrice"
+                               placeholder="Enter Unit Price">
+                    </div>
+                </aside>
+                <aside class="col-12 row justify-content-center">
+                    <div class="col-4">
+                        <button type="button" class="btn btn-warning text-white fw-bold" id="btnItemSearch">Search
+                        </button>
+                        <input type="text" class="form-control w-50 d-inline" id="searchItem" placeholder="Search Item">
+                    </div>
+                    <div class="col-4" id="itemBtnSection">
+                        <button type="button" class="btn btn-primary">Save</button>
+                        <button type="button" class="btn btn-success opacity-25" disabled>Update</button>
+                        <button type="button" class="btn btn-danger opacity-25" disabled>Delete</button>
+                        <button type="button" class="btn btn-success btn-sm ">new</button>
+                    </div>
+                </aside>
+            </section>
+            <hr>
+            <section class="col-12 ">
+                <table class="table  bg-white">
+                    <thead class="bg-secondary">
+                    <tr>
+                        <th scope="col">#Item Code</th>
+                        <th scope="col">Description</th>
+                        <th scope="col">Qty</th>
+                        <th scope="col">Unit Price</th>
+                    </tr>
+                    </thead>
+                    <tbody class="table-group-divider" id="tblItemBody">
+
+                    </tbody>
+                </table>
+            </section>
+        </section>
+    </main>
+    <main id="order-page" class="container-xxl " style="display:none;height: 90vh">
+        <section class="row me-0 ms-0 h-100">
+            <section class="col-12" style="height: 1%">
+                <h4 class="text-center w-100 m-0 ">Manage Order</h4>
+                <span class="fw-bold">Order ID :</span><span id="lblOrderID"></span>
+            </section>
+            <!--Up Section-->
+            <section class="col-lg-12 row h-25" id="orderUpSection">
+                <!--Customer Section-->
+                <section class="col-lg-12 row h-50">
+                    <aside class="row  h-100">
+
+                        <div class="dropdown  col-2  row align-items-end mb-1 me-3">
+                            <button class="btn btn-secondary  dropdown-toggle " type="button" data-bs-toggle="dropdown"
+                                    aria-expanded="false" id="btnDropDownCustomer">Customer ID
+                            </button>
+                            <ul class="dropdown-menu" id="dropCustomer">
+                                <li><a class="dropdown-item" href="#">C001</a></li>
+                            </ul>
+                        </div>
+                        <div class="mt-1 col-2  h-100 row align-items-end me-3">
+                            <label class="form-label fw-bold">Name</label>
+                            <input type="text" class="form-control " disabled placeholder="Name" id="orderCustomerName">
+                        </div>
+                        <div class="mt-1 col-2  h-100 row align-items-end me-3">
+                            <label class="form-label fw-bold">Address</label>
+                            <input type="text" class="form-control" disabled placeholder="Address"
+                                   id="orderCustomerAddress">
+                        </div>
+                        <div class="mt-1 col-2 h-100 row align-items-end">
+                            <label class="form-label fw-bold">Salary</label>
+                            <input type="text" class="form-control" disabled placeholder="Salary"
+                                   id="orderCustomerSalary">
+                        </div>
+                    </aside>
+                </section>
+                <!--Item Section-->
+
+                <section class="col-lg-12 h-50 mt-2">
+                    <hr>
+                    <aside class="row  h-100" id="orderItemSection">
+                        <div class="dropdown h-100 col-2  row align-items-end mb-1 me-3">
+                            <button class="btn btn-secondary dropdown-toggle " type="button" data-bs-toggle="dropdown"
+                                    aria-expanded="false" id="btnDropDownItem">Item Code
+                            </button>
+                            <ul class="dropdown-menu" id="dropItemCode">
+                                <li><a class="dropdown-item" href="#">C001</a></li>
+                            </ul>
+                        </div>
+
+                        <div class="mt-1 col-2  h-100 row align-items-end me-3">
+                            <label class="form-label fw-bold">Description</label>
+                            <input type="text" class="form-control" disabled placeholder="Description"
+                                   id="orderItemDesc">
+                        </div>
+                        <div class="mt-1 col-2 h-100 row align-items-end me-3">
+                            <label class="form-label fw-bold">Unit Price</label>
+                            <input type="text" class="form-control" disabled placeholder="UnitPrice"
+                                   id="orderItemUnitPrice">
+                        </div>
+                        <div class="mt-1 col-1 h-100 row align-items-end me-3">
+                            <label class="form-label fw-bold">Qty</label>
+                            <input type="number" class="form-control" placeholder="Qty" id="orderItemQty" value="1">
+                        </div>
+                        <div class="mt-1 col-1 row align-items-end w-25">
+                            <button class="btn btn-success btn-sm w-25" id="btnOrderAdd">Add</button>
+                        </div>
+
+                    </aside>
+                </section>
+            </section>
+            <!--Down Section-->
+            <section class="col-lg-12 row h-50 mt-1 ">
+                <!--Table Section-->
+                <section class="col-8 h-100 mw-100 overflow-y-scroll">
+                    <hr>
+                    <table class="table  bg-white ">
+                        <thead class="bg-secondary">
+                        <tr>
+                            <th scope="col">#Item Code</th>
+                            <th scope="col">Description</th>
+                            <th scope="col">Qty</th>
+                            <th scope="col">Unit Price</th>
+                            <th scope="col">Delete</th>
+                        </tr>
+                        </thead>
+                        <tbody class="table-group-divider" id="tblOrderDetailBody">
+                        </tbody>
+                    </table>
+                </section>
+                <!--  Purchase Order Section-->
+                <section class="col-4 row align-items-end ">
+
+                    <section class="col-lg-12 col-sm-12 bg-white container-xxl mt-2 h-75 ms-1"
+                             id="orderPaymentContainer">
+                        <section class="row  pt-3 fw-bold">
+                            <div class="col-12 text-danger">
+                                <span class="">Total :</span>
+                                <span id="orderTotal">00.00</span>
+                            </div>
+
+                            <div class="col-12 pt-2">
+                                <div class="input-group input-group-sm mb-3">
+                                    <span class="input-group-text fw-bold" id="orderDiscount">Disc</span>
+                                    <input type="number" class="form-control" aria-label="Sizing example input"
+                                           aria-describedby="orderDiscount" placeholder="0" id="txtDiscount">
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="input-group input-group-sm mb-3">
+                                    <span class="input-group-text fw-bold" id="orderCash">cash</span>
+                                    <input type="number" class="form-control" aria-label="Sizing example input"
+                                           aria-describedby="orderCash" placeholder="0.00" id="txtCash">
+                                </div>
+                            </div>
+                            <div class="col-12 text-primary">
+                                <span class="">Sub Total :</span>
+                                <span id="orderSubTotal">00.00</span>
+                            </div>
+                            <div class="col-12 pb-2 mt-2">
+                                <button class="btn btn-warning btn-sm fw-bold" id="btnPurchaseOrder">Purchase</button>
+                            </div>
+                        </section>
+                    </section>
+                </section>
+
+
+            </section>
+        </section>
+        </section>
+    </main>
+</main>
+<footer></footer>
+<script src="assets/bootstrap-5.3.0-alpha1-dist/js/bootstrap.bundle.min.js"></script>
+<script src="assets/jQuery/jquery-3.6.3.min.js"></script>
+<script>
+    var test = null;
+
+    function navigation(type, obj) {
+        clearFields();
+        obj.style.color = "blue";
+        switch (type) {
+            case "CUSTOMER":
+                document.getElementById("customer-page").style.display = "block";
+                break;
+            case "ITEM":
+                document.getElementById("item-page").style.display = "block";
+                break;
+            case "ORDER":
+                document.getElementById("order-page").style.display = "block";
+                break;
+            case "ORDER2":
+                document.getElementById("order-page2").style.display = "block";
+                break;
+            default:
+                clearFields();
+                break;
+        }
+
+    }
+
+    function clearFields() {
+        for (let i = 0; i <= 3; i++) {
+            document.getElementsByClassName('navSelect').item(i).style.color = "black";
+        }
+        document.getElementById("customer-page").style.display = "none";
+        document.getElementById("item-page").style.display = "none";
+        document.getElementById("order-page").style.display = "none";
+
+    }
+
+</script>
+<script type="module" src="db/DB.js"></script>
+<script type="module" src="controller/CustomerController.js"></script>
+<script type="module" src="controller/ItemController.js"></script>
+<script type="module" src="controller/OrderController.js"></script>
+
+
+</body>
+</html>
